@@ -1038,23 +1038,8 @@ function showToast(msg){
 }
 
 /* ===== VERSION EN INGLES =====
-   Si el sitio ya esta publicado en un dominio, manda al visitante al
-   traductor de Google (traduccion automatica de toda la pagina, gratis,
-   sin API key ni servidor). Si se abre el archivo local, muestra el aviso
-   de "Coming soon". Para desactivar la traduccion automatica y dejar solo
-   el aviso, cambia TRADUCCION_AUTOMATICA a false. */
-const TRADUCCION_AUTOMATICA = true;
-
+   El boton de la bandera abre el aviso de "Coming soon". */
 function switchLang(){
-  const host = location.hostname;
-  const esLocal = !host || host === 'localhost' || host === '127.0.0.1' || location.protocol === 'file:';
-  if(TRADUCCION_AUTOMATICA && !esLocal){
-    const proxy = host.replace(/-/g,'--').replace(/\./g,'-') + '.translate.goog';
-    const q = location.search ? location.search + '&' : '?';
-    window.location.href = location.protocol + '//' + proxy + location.pathname +
-      q + '_x_tr_sl=es&_x_tr_tl=en&_x_tr_hl=en' + location.hash;
-    return;
-  }
   document.getElementById('langModal').classList.add('open');
   document.body.style.overflow='hidden';
 }
